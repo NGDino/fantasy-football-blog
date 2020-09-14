@@ -1,9 +1,11 @@
 const router = require('express').Router();
+
 const {
   Post,
   User,
   Comment
 } = require('../../models');
+
 const sequelize = require('../../config/connection');
 
 router.get('/', (req, res) => {
@@ -12,10 +14,9 @@ router.get('/', (req, res) => {
       // query config
       attributes: [
         'id',
-        'post_url',
         'title',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        'post_text',
+        'created_at'
       ],
       order: [
         ['created_at', 'DESC']
@@ -54,10 +55,9 @@ router.get('/:id', (req, res) => {
       },
       attributes: [
         'id',
-        'post_url',
         'title',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        'post_text',
+        'created_at'
       ],
       include: [
         {
@@ -96,10 +96,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  // expects {title: 'Start or sit Cooper Kupp?', post_text: 'cooper had a terrible game 1 i would sit him', user_id: 1}
   Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
+      post_text: req.body.post_text,
       user_id: req.body.user_id
     })
     .then(dbPostData => res.json(dbPostData))
@@ -108,21 +108,6 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-//route for votes
-router.put('/upvote', (req, res) => {
-  // make sure the session exists first
-  if (req.session) {
-    // pass session id along with all destructured properties on req.body
-    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-      .then(updatedVoteData => res.json(updatedVoteData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  }
-});
- 
 
 router.put('/:id', (req, res) => {
   Post.update({
