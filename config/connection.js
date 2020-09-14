@@ -1,7 +1,7 @@
 //import sequelize constructor
 const Sequelize = require('sequelize')
 
-requestAnimationFrame('dotenv').config();
+require('dotenv').config();
 
 //create connection
 let sequelize;
