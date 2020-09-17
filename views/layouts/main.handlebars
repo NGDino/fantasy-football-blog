@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Tips</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">   
+        
+</head>
+
+<body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo center">Fantasy Football Tips</a>
+                <ul id="nav-mobile" class="left ">
+                    {{!-- {{#if loggedIn}} --}}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><button id="logout" class="btn-no-style">logout</button></li>
+                    {{!-- {{else}} --}}
+                    <li><a href="/login">Login</a></li>
+                    {{!-- {{/if}} --}}
+                </ul>
+            </div>
+        </nav>
+
+
+    <div class="wrapper">
+
+        <main>
+            {{{ body }}}
+        </main>
+
+    </div>
+
+    <footer>
+        Thanks for visiting!
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="/javascript/logout.js"></script>
+    
+
+</body>
+
+</html>
