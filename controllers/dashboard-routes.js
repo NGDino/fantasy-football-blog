@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Business } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    // console.log("Dashboard-routes.js line 7", req.session);
+router.get('/', withAuth, (req, res) => {
+    console.log("Dashboard-routes.js line 7", req.session);
 
     Post.findAll({
         where: {
@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
         .then(dbPostData => {
             //         // pass a single post object into the homepage template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            console.log(posts)
+            // console.log(posts)
             res.render('dashboard', {
                 posts,
                 loggedIn: true
