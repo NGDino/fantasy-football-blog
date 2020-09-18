@@ -1,0 +1,20 @@
+
+<div>
+    <h2>DASHBOARD</h2>
+    <h3>My Posts</h3>
+        <button type="button" id="new-post">Create New Post</button>
+
+    {{#if posts.length}}
+    <ul>
+        {{#each posts as |post|}}
+        {{!-- add card tags --}}
+        {{> post-info post}}
+         <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        {{/each}}
+    </ul>
+    {{/if}}
+</div>
+
+
+
+<script src="/javascript/add-post.js"></script>
