@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+
+//get all of single users posts
 router.get('/', withAuth, (req, res) => {
     console.log("Dashboard-routes.js line 7", req.session);
 
@@ -50,6 +52,7 @@ router.get('/', withAuth, (req, res) => {
         });
 });
 
+//edit route
 router.get('/edit/:id', (req, res) => {
     console.log(req.params.id),
         Post.findOne({
@@ -81,8 +84,6 @@ router.get('/edit/:id', (req, res) => {
           ]
         })
             .then(dbPostData => {
-                // console.table("response from the db: ");
-                // console.table(dbPostData);
                 if (!dbPostData) {
                     res.status(404).json({ message: 'No post found with this id' });
                     return;
