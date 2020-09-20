@@ -1,5 +1,3 @@
-
-  
 const showForm =(event)  => {
     event.preventDefault();
     var form = document.querySelector('.new-post');
@@ -23,6 +21,7 @@ async function newPostHandler(event){
             'Content-Type': 'application/json'
         }
     });
+    
     if(response.ok){
         document.location.reload();
     }else{
@@ -30,6 +29,6 @@ async function newPostHandler(event){
     }
 };
 
-document.querySelector('.new-post').addEventListener('submit', newPostHandler)
-
+document.querySelector('.new-post').addEventListener('submit',( newPostHandler)
+)
 document.querySelector('#create-new').addEventListener('click', showForm);
