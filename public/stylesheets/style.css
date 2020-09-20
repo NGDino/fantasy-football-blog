@@ -1,1 +1,10 @@
+@media screen and (max-width: 600px) {
+    #dinoTitle {
+      display: none;
+    }
+  }
+
+  .container{
+      padding: 10px;
+  }
 

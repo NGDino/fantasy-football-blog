@@ -1,18 +1,36 @@
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
+<div class="container">
+  <div class="row signup-form">
+    <div class="col s12 m6 center-align">
+      <div class="card indigo lighten-4">
+        <div class="card-content white-text ">
+          <span class="card-title">Signup</span>
+          <div class="row valign-wrapper">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="username-signup" type="text">
+                  <label for="username-signup">Username</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email-signup" type="text">
+                  <label for="email-signup">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password-signup" class="materialize-textarea" type="password">
+                  <label for="password-signup">Password</label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit">Signup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
+</div>
+
 <script src="/javascript/login.js"></script>

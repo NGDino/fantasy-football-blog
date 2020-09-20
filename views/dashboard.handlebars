@@ -1,37 +1,49 @@
-<div>
-    <h2>DASHBOARD</h2>
-    <h3>My Posts</h3>
-    <a class="waves-effect waves-light btn" id="create-new">Create New Post</a>
+<div class="row">
+    <div class="col s12">
+        <div class="card-panel indigo lighten-4">
+            <a class="waves-effect waves-light btn" id="create-new">Create New Post</a>
+            <h3 class="center-align">Dashboard</h3>
+            <h4 class="center-align">My Posts:</h4>
+            
 
-    <div class="row new-post hide">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="Title" id="post-title" type="text" class="validate">
-                    <label for="post-title">Title</label>
-                </div>
+            <div class="row new-post hide">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="post-title" type="text" >
+                            <label for="post-title">Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="post-text" class="materialize-textarea"></textarea>
+                            <label for="post-text">Post Text</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    </button>
+                </form>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="post-text" class="materialize-textarea"></textarea>
-                    <label for="post-text">Post Text</label>
+
+            {{#if posts.length}}
+            <ul>
+                {{#each posts as |post|}}
+                <div class="container">
+                {{!-- add card tags --}}
+                {{> post-info post}}
+                <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
                 </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            </button>
-        </form>
+                
+                <div class="divider grey darken-3"></div>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
     </div>
 
 
-    {{#if posts.length}}
-    <ul>
-        {{#each posts as |post|}}
-        {{!-- add card tags --}}
-        {{> post-info post}}
-        <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-        {{/each}}
-    </ul>
-    {{/if}}
+
+
 </div>
 
 

@@ -1,39 +1,43 @@
-{{> post-info post}}
-
-    <a class="waves-effect waves-light btn" id="add-comment">Comment on Post</a>
-
-
-<div class="row new-comment hide">
-        <form class="col s12">
+<div class="row">
+    <div class="col s12">
+        <div class="card-panel indigo lighten-4">
+            {{> post-info post}}
+            {{#if post.comments.length}}
             <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="comment-words" class="materialize-textarea"></textarea>
-                    <label for="comment-words">Comment:</label>
+                <div class="col">
+                    {{#each post.comments}}
+                    <div class="comment container">
+                        <div class="meta">
+                            {{user.username}} on {{created_at}}
+                        </div>
+                        <div class="text">
+                            {{comment_text}}
+                        </div>
+                    <div class="divider grey darken-3"></div>
+                </div>
+                        
+                        {{/each}}
+                    <div class="container">
+                        <a class="waves-effect waves-light btn" id="add-comment">Comment on Post</a>
+                        <div class="row new-comment hide">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="comment-words" class="materialize-textarea"></textarea>
+                                        <label for="comment-words">Comment:</label>
+                                    </div>
+                                </div>
+                                <button class="btn waves-effect waves-light" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" >Submit</button>
-        </form>
-    </div>
-    
-
-{{#if post.comments.length}}
-<div class="row">
-    <div class="col">
-        <h3>Comments</h3>
-        <div class="comments">
-            {{#each post.comments}}
-            <section class="comment">
-                <div class="meta">
-                    {{user.username}} on {{created_at}}
-                </div>
-                <div class="text">
-                    {{comment_text}}
-                </div>
-            </section>
-            {{/each}}
+            {{/if}}
         </div>
     </div>
 </div>
-{{/if}}
+
 
 <script src="/javascript/add-comment.js"></script>
